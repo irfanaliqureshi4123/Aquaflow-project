@@ -16,10 +16,10 @@ require_once '../vendor/autoload.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-// ✅ Gmail SMTP Configuration
-define('SMTP_EMAIL', 'irfanprogrammer1@gmail.com');
-define('SMTP_PASS', 'REDACTED'); // Gmail App Password
-define('SMTP_NAME', 'AquaFlow Billing');
+// ✅ Gmail SMTP Configuration - Loaded from environment variables
+$smtpEmail = getenv('SMTP_USERNAME') ?: getenv('SMTP_FROM_EMAIL');
+$smtpPass = getenv('SMTP_PASSWORD');
+$smtpName = getenv('SMTP_FROM_NAME') ?: 'AquaFlow Billing';
 
 // ✅ Get invoice ID from request
 $invoiceId = isset($_GET['id']) ? intval($_GET['id']) : 0;
@@ -80,13 +80,13 @@ try {
     $mail->isSMTP();
     $mail->Host       = 'smtp.gmail.com';
     $mail->SMTPAuth   = true;
-    $mail->Username   = SMTP_EMAIL;
-    $mail->Password   = SMTP_PASS;
+    $mail->Username   = $smtpEmail;
+    $mail->Password   = $smtpPass;
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     $mail->Port       = 587;
 
     // Sender & Recipients
-    $mail->setFrom(SMTP_EMAIL, SMTP_NAME);
+    $mail->setFrom($smtpEmail, $smtpName);
     $mail->addAddress($customerEmail, $customerName);
 
     // Add CC and BCC

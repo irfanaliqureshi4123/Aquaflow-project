@@ -197,12 +197,14 @@ if (isset($_GET['order_id'])) {
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'irfanprogrammer1@gmail.com';
-        $mail->Password = 'REDACTED'; // Gmail App Password
+        $mail->Username = getenv('SMTP_USERNAME') ?: getenv('SMTP_FROM_EMAIL');
+        $mail->Password = getenv('SMTP_PASSWORD');
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 
-        $mail->setFrom('irfanprogrammer1@gmail.com', 'Aqua Cool Water Store');
+        $smtpFromEmail = getenv('SMTP_USERNAME') ?: getenv('SMTP_FROM_EMAIL');
+        $smtpFromName = getenv('SMTP_FROM_NAME') ?: 'Aqua Cool Water Store';
+        $mail->setFrom($smtpFromEmail, $smtpFromName);
         $mail->addAddress($orderData['email'], $orderData['customer_name']);
         $mail->addAttachment($invoicePath);
 
