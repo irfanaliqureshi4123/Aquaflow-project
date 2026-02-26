@@ -1,32 +1,32 @@
-# Aquaflow - E-Commerce Platform
+# Aquaflow - Mineral Water Supply & Management System
 
-A comprehensive e-commerce platform built with PHP for selling jewelry and accessories. The system includes an admin dashboard, customer portal, order management, payment processing, and membership features.
+A comprehensive mineral water supply and delivery management platform. The system includes an admin dashboard, customer portal, order management, payment processing, delivery tracking, and subscription/membership features for water delivery services.
 
 ## Features
 
 ### Customer Features
 - User registration and email verification
-- Product browsing and search
-- Shopping cart and wishlist management
-- Membership/subscription plans
-- Order placement and tracking
+- Water product browsing and ordering
+- Subscription/membership plans for regular deliveries
+- Shopping cart and order management
+- Order placement and delivery tracking
 - Multiple payment methods (Card, COD)
 - Order history and invoices
-- Product reviews and ratings
-- Email notifications
+- Delivery scheduling and preferences
+- Email notifications and reminders
 
 ### Admin Features
-- Dashboard with analytics and metrics
-- Product management
+- Dashboard with analytics and key metrics
+- Water product management
 - Order management and fulfillment
-- User/customer management
-- Payment processing and history
-- Membership management
-- Staff management
+- Customer/user management
+- Subscription and membership plan management
 - Delivery and logistics tracking
+- Payment processing and history
+- Staff and delivery personnel management
 - System logs and audit reports
 - Email template management
-- Payment and wallet functionality
+- Invoice generation
 - Backup and database management
 
 ### Technical Features
@@ -104,15 +104,15 @@ php -S localhost:8000
 The application uses MariaDB with the following main tables:
 
 - **users** - Customer and admin accounts
-- **products** - Product catalog
-- **orders** - Customer orders
-- **order_items** - Individual items in orders
+- **products** - Mineral water products and packages
+- **orders** - Customer water delivery orders
+- **order_items** - Individual items/packages in orders
 - **shopping_cart** - Customer shopping carts
 - **wishlist** - Saved products
-- **product_reviews** - Customer reviews and ratings
+- **deliveries** - Delivery records and tracking
 - **payments** - Payment records
-- **memberships** - Subscription plans
-- **contact_messages** - Contact form submissions
+- **memberships** - Subscription plans for regular deliveries
+- **contact_messages** - Customer inquiries and support
 
 ### Database Migration
 
@@ -203,7 +203,8 @@ Development Team - Aquaflow Project
 
 ## Notes
 
-- This database dump contains sample/test data for reference
-- All sensitive information has been removed from the public repository
+- This is a mineral water supply management system designed for water delivery services
+- The database dump (fashion_bloom.sql) contains sample/test data for reference
+- All sensitive customer information has been removed from the public repository
 - Configure your own environment variables before deployment
-- Update API keys and credentials in production environment
+- Update API keys, payment gateway credentials, and email settings in production environment
